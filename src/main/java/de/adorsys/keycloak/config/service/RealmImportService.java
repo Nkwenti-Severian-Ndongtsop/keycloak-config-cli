@@ -87,6 +87,7 @@ public class RealmImportService {
     private final ClientAuthorizationImportService clientAuthorizationImportService;
     private final ClientScopeMappingImportService clientScopeMappingImportService;
     private final IdentityProviderImportService identityProviderImportService;
+    private final OrganizationImporter organizationImporter;
     private final MessageBundleImportService messageBundleImportService;
 
     private final ImportConfigProperties importProperties;
@@ -114,6 +115,7 @@ public class RealmImportService {
             ClientAuthorizationImportService clientAuthorizationImportService,
             ClientScopeMappingImportService clientScopeMappingImportService,
             IdentityProviderImportService identityProviderImportService,
+            OrganizationImporter organizationImporter,
             MessageBundleImportService messageBundleImportService,
             OtpPolicyImportService otpPolicyImportService,
             ChecksumService checksumService,
@@ -137,6 +139,7 @@ public class RealmImportService {
         this.clientAuthorizationImportService = clientAuthorizationImportService;
         this.clientScopeMappingImportService = clientScopeMappingImportService;
         this.identityProviderImportService = identityProviderImportService;
+        this.organizationImporter = organizationImporter;
         this.messageBundleImportService = messageBundleImportService;
         this.otpPolicyImportService = otpPolicyImportService;
         this.checksumService = checksumService;
@@ -230,6 +233,7 @@ public class RealmImportService {
         userImportService.doImport(realmImport);
         authenticationFlowsImportService.doImport(realmImport);
         identityProviderImportService.doImport(realmImport);
+        organizationImporter.doImport(realmImport);
         requiredActionsImportService.doImport(realmImport);
         authenticatorConfigImportService.doImport(realmImport);
         clientImportService.doImportDependencies(realmImport);
